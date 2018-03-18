@@ -166,6 +166,15 @@
 
 <img src="test_images_output/whiteCarLaneSwitch.jpg" width="480" alt="Combined Image" />
 
+- 图像保存
+
+  ```python
+  # 由于读取的是RGB图像，opencv保存的时候需要转换为BGR
+  result = cv2.cvtColor(result, cv2.COLOR_RGB2BGR)
+  # write image
+  cv2.imwrite("test_images_output/whiteCarLaneSwitch.jpg", result)
+  ```
+
 - 在视频上进行车道线检测
 
   > 注意：如果没有安装ffmpge，会报错，**NeedDownloadError: Need ffmpeg exe.** ，安装imageio模块，执行如下代码
@@ -174,7 +183,7 @@
   imageio.plugins.ffmpeg.download()
   ```
 
-  > 把刚才的操作封装一函数，把该函数传递给视频处理程序
+  > 把刚才的操作封装一函数，把该函数传递给视频处理程序,，去掉图像保存
 
   ```python
   def process_image(image):
